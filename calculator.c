@@ -7,21 +7,33 @@ double multiply(double a, double b);
 double divide(double a, double b);
 
 int main(){
-    //Defines the testing variables
-    double x= 5.0;
-    double y= 10.0;
+    //Defines the input variables
+    double x, y;
+    double z;
+    char operation;
 
-    //Tests the funcitons inside of main()
-    double test1=add(x,y);
-    double test2=subtract(x,y);
-    double test3=multiply(x,y);
-    double test4=divide(x,y);
+    printf("Please choose an operator:\n Addition: A\n Subtraction: S\n Multiplication: M\n Division: D\n");
+    scanf("%c", &operation);
+    printf("Please input a value for x:\n");
+    scanf("%lf", &x);
+    printf("Please input a value for y:\n");
+    scanf("%lf", &y);
 
-    //Prints the values of the test functions
-    printf("%lf\n", test1);
-    printf("%lf\n", test2);
-    printf("%lf\n", test3);
-    printf("%lf\n", test4);
+    if(operation == 'A'){
+        z=add(x,y);
+        printf("%lf plus %lf equals: %lf\n", x,y,z);
+    }else if(operation == 'S'){
+        z=subtract(x,y);
+        printf("%lf minus %lf equals: %lf\n", x,y,z);
+    }else if(operation=='M'){
+        z=multiply(x,y);
+        printf("%lf times %lf equals: %lf\n", x,y,z);
+    }else if(operation=='D'){
+        z=divide(x,y);
+        printf("%lf divided by %lf equals: %lf\n", x,y,z);
+    }
+
+
 }
 
 //Defines the calculator functions
