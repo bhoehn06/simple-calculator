@@ -13,11 +13,34 @@ int main(){
     char operation;
 
     printf("Please choose an operator:\n Addition: A\n Subtraction: S\n Multiplication: M\n Division: D\n");
-    scanf("%c", &operation);
+    
+    //
+    if (scanf("%c", &operation)!=1){
+        printf("Invalid input, terminating program.\n");
+        return 1;
+    }
+
+    //
+    
+    if((operation!='A')&&(operation!='S')&&(operation!='M')&&(operation!='D')){
+        printf("Invalid input, terminating program.\n");
+        return 1;
+    }
+
+    //
     printf("Please input a value for x:\n");
-    scanf("%lf", &x);
+    if(scanf("%lf", &x)!=1){
+        printf("Invalid input, terminating program.\n");
+        return 1;
+    }
+
+    //
     printf("Please input a value for y:\n");
-    scanf("%lf", &y);
+    if(scanf("%lf", &y)!=1){
+        printf("Invalid input, terminating program.\n");
+        return 1;
+    }
+
 
     if(operation == 'A'){
         z=add(x,y);
@@ -29,6 +52,10 @@ int main(){
         z=multiply(x,y);
         printf("%lf times %lf equals: %lf\n", x,y,z);
     }else if(operation=='D'){
+         if (y==0.0){
+        printf("Error, division by zero is not allowed.\n");
+        return 0.0; //Returns to default value
+    }
         z=divide(x,y);
         printf("%lf divided by %lf equals: %lf\n", x,y,z);
     }
@@ -50,10 +77,5 @@ double multiply(double a, double b){
 }
 
 double divide(double a, double b){
-   //Protects program against divide by zero errors
-    if (b==0.0){
-        printf("Error, division by zero is not allowed.\n");
-        return 0.0; //Returns to default value
-    }
     return a/b;
 }
